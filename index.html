@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE TITLE FORGE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cosmic-blue: #020617;
+        --cosmic-accent: #3b82f6;
+      }
+      body {
+        margin: 0;
+        background-color: #020617;
+        color: #f8fafc;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3, h4, .font-cinzel {
+        font-family: 'Cinzel', serif;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #020617;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #334155;
+      }
+      
+      .cosmic-gradient {
+        background: radial-gradient(circle at 0% 0%, #1e1b4b 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, #0f172a 0%, transparent 50%),
+                    radial-gradient(circle at 50% 100%, #1e1b4b 0%, transparent 50%),
+                    #020617;
+        position: relative;
+      }
+
+      .cosmic-gradient::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+        z-index: 1;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+      }
+
+      @keyframes glitch {
+        0% { transform: translate(0) skew(0deg); clip-path: inset(0 0 0 0); }
+        20% { transform: translate(-2px, 2px) skew(2deg); clip-path: inset(10% 0 30% 0); }
+        40% { transform: translate(2px, -2px) skew(-2deg); clip-path: inset(30% 0 10% 0); }
+        60% { transform: translate(-1px, 1px) skew(1deg); clip-path: inset(50% 0 50% 0); }
+        80% { transform: translate(1px, -1px) skew(-1deg); clip-path: inset(0 0 0 0); }
+        100% { transform: translate(0) skew(0deg); }
+      }
+
+      @keyframes hue {
+        from { filter: hue-rotate(0deg); }
+        to { filter: hue-rotate(360deg); }
+      }
+
+      @keyframes crack-appear {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+
+      .glass-morphism {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      
+      .text-glow-sm {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+
+      * {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .no-select {
+        user-select: none;
+      }
+
+      .crack-overlay {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpath d='M0 0 L100 100 M100 0 L0 100 M50 0 L50 100 M0 50 L100 50' stroke='white' stroke-width='0.5' opacity='0.5'/%3E%3Cpath d='M10 10 L30 40 L10 80 M80 20 L60 50 L90 90 M40 10 L50 30 L60 10' stroke='white' stroke-width='1' opacity='0.3' fill='none'/%3E%3C/svg%3E");
+        background-size: cover;
+      }
+
+      .crack-overlay.active {
+        opacity: 1;
+        animation: crack-appear 0.1s ease-out;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
